@@ -1,3 +1,0 @@
-# forumdemo
-author:guoxudong
-
