@@ -1,11 +1,10 @@
-
 #coding:utf-8
 from django.db import models
 
 # Create your models here.
 
 from django.contrib.auth.models import User
-from django.db import models
+from block.models import Block
 
 class Article(models.Model):
     block=models.ForeignKey(Block,verbose_name=u"所属板块")
