@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$',"block.views.block_list",name="block_list"),
     url(r'^article/',include("article.urls")),
+    url(r'^usercenter/',include("usercenter.urls")),
 ]
 

@@ -1,0 +1,57 @@
+
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+   <div class="col-xs-12">
+     {% if form.errors %}
+     <div class="alet alert-danger">
+	     {{ form.errors }}
+     </div>
+     {% endif %}
+   </div>
+ </div>
+ <div class="row">
+   <div class="col-xs-3">
+	   &nbspi;
+   </div>
+   <div class="col-xs-6">
+     <div class="panel panel-info">
+       <div class="panel-heading">
+	       <b>注册</b>
+       </div>
+   <div class="panel-body">
+     <form method="post" action="{% url 'login' %}">
+	     {% csrf_token %}
+<div class="input-group">
+  <span class="input-group-addon">用户名</span>
+  <input id="id_username" maxlength="254" name="username" type="text" class="form-control" />
+  </div>
+  <br />
+<div class="input-group">
+  <span class="input-group-addon">邮箱&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  <div class="input-group">
+    <span class="input-group-addon">
+	    密码&nbsp;&nbsp;&nbsp;&nbsp;
+	</span>
+    <span class="input-group-addon">
+	    确认密码</span>
+<input type="submit" class="btn bsn-primary" value="注册" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+</div>
+<div class="panel-footer">
+  <a href="{% url 'usercenter_register' %}">已有账户？去登陆...</a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </div>
+  </div>
+  </div>
+  <div class="col-sx-3">
+	  &nbsp;
+	  </div>
+	  </div>
+{% endblock %}

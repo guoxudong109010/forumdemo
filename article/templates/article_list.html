@@ -5,10 +5,10 @@
     <li><a href="{% url 'block_list' %}">
 		    首页
 	</a></li>
-    <li class="artive">{{block.name}}</li>
+    <li class="artive">{{b.name}}</li>
     
   </ol>
-  <a href="{% url 'article_create' %}" class="btn btn-primary btn-lg active" role="button">发表文章</a>
+  <a href="{% url 'article_create' b.id %}" class="btn btn-primary btn-lg active" role="button">发表文章</a>
   <table class="table table-bordered">
     <tr>
       <th>状态</th>
@@ -19,11 +19,15 @@
     {% for article in articles %}
     <tr>
 	    <td>{{ article.get_status_display }}</td>
-	    <td>{{ article.title }}</td>
+	    <td>
+		 <a href="{% url 'article_detail' article.id %}" >
+		    {{ article.title }}
+		 </a>
+	    </td>
 	    <td>{{ article.owner }}</td>
-	    <td>{{
-		    article.last_update_timestamp|date:"Y-m-d p" }}</td>
+	    <td>{{ article.last_update_timestamp|date:"Y-m-d p" }}</td>
     </tr>
+
     {% endfor %}
     </table>
     </div>
