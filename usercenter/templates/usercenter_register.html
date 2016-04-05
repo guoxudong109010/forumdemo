@@ -3,10 +3,18 @@
 {% block content %}
 <div class="row">
    <div class="col-xs-12">
-     {% if form.errors %}
-     <div class="alet alert-danger">
-	     {{ form.errors }}
-     </div>
+  <ol class="breadcrumb">
+    <li><a href="{% url 'block_list' %}">
+		    首页
+	</a></li>
+    <li class="artive">注册</li>
+  </ol>
+  {% if messages %}
+     {% for message in messages %}
+       <div class="alert alert-danger">
+	       {{message}}
+       </div>
+     {% endfor %}
      {% endif %}
    </div>
  </div>
@@ -20,27 +28,44 @@
 	       <b>注册</b>
        </div>
    <div class="panel-body">
-     <form method="post" action="{% url 'login' %}">
+     <form method="post" action="">
 	     {% csrf_token %}
 <div class="input-group">
-  <span class="input-group-addon">用户名</span>
+  <span class="input-group-addon">用户名&nbsp;&nbsp;</span>
   <input id="id_username" maxlength="254" name="username" type="text" class="form-control" />
   </div>
   <br />
 <div class="input-group">
   <span class="input-group-addon">邮箱&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  <input id="id_email" maxlength="254" name="email" type="text" class="form-control" />
+  </div>
+  <br />
   <div class="input-group">
     <span class="input-group-addon">
 	    密码&nbsp;&nbsp;&nbsp;&nbsp;
 	</span>
+  <input id="id_password" maxlength="254" name="password" type="text" class="form-control" />
+  </div>
+  <br />
+  <div class="input-group">
     <span class="input-group-addon">
-	    确认密码</span>
+	    确认密码
+    </span>
+  <input maxlength="254" name="re_password" type="text" class="form-control" />
+  </div>
+  <br />
 <input type="submit" class="btn bsn-primary" value="注册" />
+  <br />
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
 </div>
 <div class="panel-footer">
-  <a href="{% url 'usercenter_register' %}">已有账户？去登陆...</a>
+  <a href="{% url 'login' %}">已有账户？去登陆...</a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
