@@ -8,10 +8,10 @@
   <body>
     <div class="container">
       <div class="row">
-        <div class="col-xs-8">
           <div class="jumbotron">
             <center><h1>python部落论坛</h1>            </center>
            </div>
+        <div class="col-xs-8">
      {% for block in blocks %}
      <div class="blockItem">
 	  <div class="panel-default">
@@ -34,8 +34,10 @@
 	     {% if user.is_authenticated %}
 	     <p>{{ user.username }}.欢迎来到论坛.</p>
 	     <a href="{% url 'logout_then_login' %}">登出</a>
+	     <a href="{% url 'password_change' %}">修改密码</a>
 	     {% else %}
 	     <p>匿名用户.请<a href="{% url 'login' %}">登录</a>.</p>
+	     <a href="{% url 'password_reset' %}">重置密码</a>
 	     {% endif %}
      </div>
          
@@ -43,5 +45,6 @@
 
       </div>
       </div>
+      <script type="text/javascript" src="/static/lib/jquery/jquery/jquery-1.9.1.min.js"></script>
   </body>
 </html>

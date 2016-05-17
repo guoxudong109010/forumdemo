@@ -52,7 +52,7 @@ def activate(request,code):
     query=ActivateCode.objects.filter(code=code,expire_timestamp__gte=datetime.datetime.now())
     if query.count()>0:
         code_record=query[0]
-        code_record.owner.is_active=Ture
+        code_record.owner.is_active=True
         code_record.owner.save()
         return HttpResponse(u'激活成功')
     else:
