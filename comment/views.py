@@ -14,6 +14,14 @@ def create_comment(request):
     article = Article.objects.get(id=article_id)
     comment = Comment(block=article.block, article=article, owner=request.user, to_comment_id=to_comment_id, content=content)
     comment.save()
+
+    if to_comment_id == 0:
+         new_msg = UserMessage(owner=article.owner, content = u"有人评论您的文章 (%s)" % article.title, link = reverse("article_detail", args = [article.id]))
+         New_ms.save()
+    else:
+         to_comment = comment.objects.get(id=to_comment_id)
+         new_msg=UserMessage(owner = to_comment.owner,content=u"有人回复了您的评论 '%s' "%to_comment.content[:30], link=reverse("article_detail", args=[article.id]))
+         new_msg.save()
     return json_response({})
 
 @login_required

@@ -54,13 +54,20 @@ def create_article(request, block_id):
         return redirect(reverse("article_list",args=[block.id]))
 
 def article_detail(request,article_id):
+
+    
+    page_no = int(request.GET.get("comment_page_no", "1"))
     article_id = int(article_id)
     article = Article.objects.get(id=article_id)
-    comment_page_no = int(request.GET.get("comment_page_no", "1"))
-    comments = Comment.objects.filter(article=article).order_by("-last_update_timestamp")
+    comments = Comment.objects.filter(article=article, status=0)
+    comments, pagination_data = paginate_queryset(comments, page_no, cnt_per_page=3)
+    
+    
+    
+    
+   # comment_page_no = int(request.GET.get("comment_page_no", "1"))
     print comments
-    object_list, pagination_data = paginate_queryset(comments, comment_page_no, cnt_per_page=1)
-    return render_to_response("article_detail.html", {"comments":object_list, "article":article, "pagination":pagination_data}, context_instance=RequestContext(request))
+    return render_to_response("article_detail.html", {"comments":comments, "article":article, "pagination":pagination_data}, context_instance=RequestContext(request))
    # return render_to_response("article_detail.html", {"article":article},context_instance=RequestContext(request))
         
 

@@ -16,6 +16,12 @@ class Comment(models.Model):
     status = models.IntegerField(u"状态", choices = ((0, u"普通"),(-1, u"删除")), default = 0)
     create_timestamp=models.DateTimeField(auto_now_add=True)
     last_update_timestamp=models.DateTimeField(auto_now=True)
+    @property
+    def to_comment(self):
+        if not self.to_comment_id:
+            return None
+        else:
+            return Comment.objects.get(id=self.to_comment_id)
     def __unicode__(self):
         return self.content[:20]
     class Meta:
