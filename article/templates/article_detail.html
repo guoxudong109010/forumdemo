@@ -41,7 +41,7 @@
 			    </blockquote>
 			    {% endif %}
 			    <h6>发表于:{{ comment.create_timestamp|date:"Y-m-d p" }}</h6>
-			    <a href="#commentContent" class="btn btn_primary pull_right subCommentBtn" data-comment-id="{{ comment.id }}" data-owner="{{ comment.owner.username }}">回复</a>
+			    <a href="#commentContent" class="btn btn-primary pull-right subCommentBtn" data-comment-id="{{ comment.id }}" data-owner="{{ comment.owner.username }}">回复</a>
 			    <div>{{ comment.content | linebreaksbr }}</div>
 			    {% endwith %}
 	       </td>

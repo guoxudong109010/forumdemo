@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>python部落论坛</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha3841q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   </head>
   <body>
     <div class="container">
@@ -30,10 +30,17 @@
 
       </div>
         <div class="col-xs-4">
-     <div class="blockItem">
+     <div class="well">
 	     {% if user.is_authenticated %}
-	     <p>{{ user.username }}.欢迎来到论坛.</p>
+	     <span>{{ user.username }}.</span>
+	     {% if msg_cnt %}
+	     <a href="{% url 'message_list' %}"><span class="badge">{{ msg_cnt }}</span></a>
+	     {% endif %}
+	     <br/>
+	     欢迎来到论坛.
+	     <br/>
 	     <a href="{% url 'logout_then_login' %}">登出</a>
+	     </br>
 	     <a href="{% url 'password_change' %}">修改密码</a>
 	     {% else %}
 	     <p>匿名用户.请<a href="{% url 'login' %}">登录</a>.</p>
@@ -45,6 +52,6 @@
 
       </div>
       </div>
-      <script type="text/javascript" src="/static/lib/jquery/jquery/jquery-1.9.1.min.js"></script>
+      <script type="text/javascript" src="/static/lib/jquery/jquery-1.9.1.min.js"></script>
   </body>
 </html>
